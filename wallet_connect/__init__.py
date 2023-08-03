@@ -30,7 +30,6 @@ def wallet_connect(label, key=None, message="Connect Wallet", contract_address="
         token_id=token_id
         )
 
-
 wallet_button = wallet_connect(label="wallet", key="wallet")
 st.write(f"Wallet {wallet_button} connected.")
 
@@ -44,3 +43,16 @@ if mint_button == True:
     st.image("dog.jpeg")
 else:
     st.write("Not authorized to access this application.")
+
+def main():
+    connect_button = wallet_connect(label="wallet", key="wallet", message="Login")
+
+    if connect_button != "not":
+        st.success('Connected', icon="✅")
+        st.write(f'connected with address: {connect_button}')
+
+    else:
+        st.error("Not authorized to access this application.", icon="🚨")
+            
+if __name__ == "__main__":
+    main()
